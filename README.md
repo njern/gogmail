@@ -1,6 +1,6 @@
 # go-gmail
 
-go-gmail is an up-and-coming GMail library in [Go](http://golang.org/). For now it only supports sending e-mail using authenticated SMTP.
+go-gmail is an up-and-coming GMail library in [Golang](http://golang.org/). For now it only supports sending e-mail using authenticated SMTP.
 
 
 ## Installation
