@@ -13,7 +13,7 @@ const (
 
 // Gmail encapsulates an authenticated GMail user.
 type GMail struct {
-	username string
+	Username string
 	auth     *smtp.Auth
 }
 
@@ -27,7 +27,7 @@ func GmailConnection(username, password string) *GMail {
 // SendMail() sends a mail via GMail - assuming you have valid credentials and a working internet connection.
 func (gmail *GMail) SendMail(recipients []string, subject, body string, isHTML bool) error {
 	// Remove any newlines before the body...
-	sender := strings.Replace(gmail.username, "\n", "", -1)
+	sender := strings.Replace(gmail.Username, "\n", "", -1)
 	recipientString := strings.Replace(strings.Join(recipients, ", "), "\n", "", -1)
 	subject = strings.Replace(subject, "\n", "", -1)
 
@@ -41,7 +41,7 @@ func (gmail *GMail) SendMail(recipients []string, subject, body string, isHTML b
 
 	err := smtp.SendMail(fmt.Sprintf("%s:%d", SERVER, PORT),
 		*gmail.auth,
-		gmail.username,
+		gmail.Username,
 		recipients,
 		[]byte(message))
 

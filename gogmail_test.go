@@ -12,7 +12,7 @@ const (
 func TestSendingGmail(t *testing.T) {
 	gmail := GmailConnection(GMAIL_ADDRESS, GMAIL_PASSWORD)
 
-	err := gmail.SendMail([]string{"niclas@walkbase.com"}, "Hello go-gmail!", "Looks like the unit test is running just fine.", false)
+	err := gmail.SendMail([]string{gmail.Username}, "Hello go-gmail!", "Looks like the unit test is running just fine.", false)
 	if err != nil {
 		t.Error("Sending a gmail e-mail failed with error: ", err)
 	}
@@ -21,7 +21,7 @@ func TestSendingGmail(t *testing.T) {
 func TestSendingGmailWithInvalidUser(t *testing.T) {
 	gmail := GmailConnection("complete", "bullshit")
 
-	err := gmail.SendMail([]string{"niclas@walkbase.com"}, "Hello go-gmail!", "This really should not be working.", false)
+	err := gmail.SendMail([]string{gmail.Username}, "Hello go-gmail!", "This really should not be working.", false)
 	if err == nil {
 		t.Error("Somehow we managed to send an e-mail with invalid logins: ", err)
 	}
